@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils.hieroskopia_pkg.hieroskopia.dates.date_analyser import DateAnalyser
+from hieroskopia.dates.date_analyser import DateAnalyser
 
 
 class TestDateAnalyser(object):

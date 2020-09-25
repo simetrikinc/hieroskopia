@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils.hieroskopia_pkg.hieroskopia.numeric.numeric_analyser import NumericAnalyser
+from hieroskopia.numeric.numeric_analyser import NumericAnalyser
 
 
 class TestNumericAnalyser(object):
