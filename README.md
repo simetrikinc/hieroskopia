@@ -1,4 +1,6 @@
-# hieroskopia Package
+# Hieroskopia
+[![codecov](https://codecov.io/gh/simetrikinc/hieroskopia/branch/master/graph/badge.svg)](https://codecov.io/gh/simetrikinc/hieroskopia)
+
 
 The hiereskopia package its a library to infer properties 
 from dates and numeric data types like formats or separators from samples through regular patterns 
