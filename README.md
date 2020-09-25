@@ -5,7 +5,7 @@ from dates and numeric data types like formats or separators from samples throug
 in a pandas series.
 
 ## Support 
-###Date-times:
+### Date-times:
 - Support to dates and datetime format
 - This library receive a series as input and try to return
  a dictionary with the format found in the series Based on the 1989 C 
