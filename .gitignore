@@ -6,6 +6,7 @@ hieroskopia_pkg_simetrik.egg-info/*
 
 # Idea
 .idea/*
+.pytest_cache
 
 # Testing
 .coverage
