@@ -11,7 +11,7 @@ setuptools.setup(
     description="The hiereskopia package its a library to infer properties from dates and numeric data types like formats or separators from samples through regular patterns in a pandas series.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/simetrikinc/hieroskopia",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

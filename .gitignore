@@ -3,3 +3,8 @@ dist/*
 build/*
 hieroskopia.egg-info/*
 hieroskopia_pkg_simetrik.egg-info/*
+
+
+# Testing
+.coverage
+coverage.xml
