@@ -1,0 +1,5 @@
+pandas==1.1.1
+pytest-cov>=2.10.1
+pytest-html>=2.1.1
+pytest-xdist>=2.1.0
+pytest>=6.0.1
