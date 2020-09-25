@@ -4,6 +4,8 @@ build/*
 hieroskopia.egg-info/*
 hieroskopia_pkg_simetrik.egg-info/*
 
+# Idea
+.idea/*
 
 # Testing
 .coverage
