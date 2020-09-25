@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="hieroskopia_pkg-simetrik",
+    name="hieroskopia",
     version="0.0.1",
     author="Simetrik",
     author_email="contacto@simetrik.com",
