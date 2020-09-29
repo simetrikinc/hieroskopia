@@ -33,10 +33,10 @@ class NumericAnalyser(object):
 
         # Trim whitespaces and currencies
         series = series.astype(str).str.replace(r'[\$€£¥ ]', '', regex=True)
-        if Evaluator.series_match(series, simple_int_pattern) and not Evaluator.series_match(series, chars_not_allowed):
+        if Evaluator(series).series_match(simple_int_pattern) and not Evaluator(series).series_match(chars_not_allowed):
             format_result = [numeric_format for (re_exp, numeric_format) in
                              numeric_dict.items() if
-                             Evaluator.series_match(series, re_exp)]
+                             Evaluator(series).series_match(re_exp)]
             return format_result
         else:
             return []

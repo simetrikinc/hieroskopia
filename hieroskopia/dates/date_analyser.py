@@ -56,11 +56,11 @@ class DateAnalyser(object):
         }
         # Todo implement unique logic to series
         # Have this column a generic date format ?
-        if Evaluator.series_match(series, generic_date_pattern):
+        if Evaluator(series).series_match(generic_date_pattern):
             # Have this column time ?
-            formats_dict = datetime_dict if Evaluator.series_contains(series, hour_pattern) else dates_dict
+            formats_dict = datetime_dict if Evaluator(series).series_contains(hour_pattern) else dates_dict
             format_result = {'formats': [date_format for (re_exp, date_format) in formats_dict.items() if
-                             Evaluator.series_contains(series, re_exp)]}
+                             Evaluator(series).series_contains(re_exp)]}
             return format_result
 
         return {}
