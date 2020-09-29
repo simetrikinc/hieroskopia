@@ -54,7 +54,6 @@ class DateAnalyser(object):
             # 2019-11-27T12:00:05.000Z
             "^\\d{4}-\\d{1,2}-\\d{1,2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$": "%Y-%m-%dT%H:%M:%S.%fZ"
         }
-        # Todo implement unique logic to series
         # Have this column a generic date format ?
         if Evaluator(series).series_match(generic_date_pattern):
             # Have this column time ?
