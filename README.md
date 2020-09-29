@@ -3,7 +3,7 @@
 
 
 The hiereskopia package its a library to infer properties 
-from dates and numeric data types like formats or separators from samples through regular patterns 
+from dates and numeric data types, like formats or separators from samples, through regular patterns 
 in a pandas series.
 
 ## Support 
@@ -18,30 +18,37 @@ in a pandas series.
  a dictionary with the three digit and decimal character separator
 
 ## Usage
-Usage doc based on a similar library called `dateinfer` from `@jeffreystarr`
+
+#### Infer datetime
 
 ````Python
->>> import hieroskopia
->>> hierokopia.infer_datetime(['Mon Jan 13 09:52:52 MST 2014', 'Tue Jan 21 15:30:00 EST 2014'])
->>> {'format': '%a %b %d %H:%M:%S %Z %Y'}
+>>> from hieroskopia import InferDatetime
+>>> InferNumeric.infer(pd.Series(["2019-11-27",
+                     "2019/11/28",
+                     "2018-11-08"]))
+>>> {'formats': ['%Y-%m-%d', '%Y/%m/%d']}
 ````
 
-The above method works with a best guess approach to detect a format in a series and try 
+The above method works with a best guess approach to detect a format in a object type series and try 
 to return a `datetime.strftime`/`strptime` format that will cover or parse the majority
 of the samples.
 
+
+#### Infer numeric
+
 ````Python
->>> import hieroskopia
->>> hierokopia.infer_number(['300.231,3', '200,3'])
->>> {'three_digit_separator': '.', 'decimal_separator': ',' }
+>>> from hieroskopia import InferNumeric
+>>> InferNumeric.infer(pd.Series(['767313628196.2', '76731362819.546', '767313628196']))
+>>> {'three_digit_separator': '', 'decimal_separator': '.' }
 ````
 
-The above method will try to detect and return certain properties in a series
-like `three_digit_separator` or `deciamal_separator` character that will cover 
+The above method will try to detect and return certain properties in a object type series
+like `three_digit_separator` or `decimal_separator` character that will cover 
 the majority of the samples.
 
 
 ## To do:
 - Specify another output standard format to support java date format, snowflake date characters definition etc.
 - Feed more regular expressions
+- Add Time format
 - Develop multiple algorithms to get a better precision.
