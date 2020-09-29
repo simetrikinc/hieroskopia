@@ -26,15 +26,15 @@ class TestNumericAnalyser(object):
         Special logic:
         Boundary Values:
         """
-        self.numeric_analyser_unittest(expected_list=[{'decimal_separator': '', 'three_digit_separator': ''},
-                                                      {'decimal_separator': '', 'three_digit_separator': ''},
-                                                      {'decimal_separator': '', 'three_digit_separator': ''},
-                                                      {'decimal_separator': '', 'three_digit_separator': ''}],
+        self.numeric_analyser_unittest(expected_list=[[],
+                                                      [],
+                                                      [{'three_digit_separator': '', 'decimal_separator': '.'}],
+                                                      [{'three_digit_separator': '', 'decimal_separator': '.'}]],
                                        data={
                                            "date": ["2019-11-27",
                                                     "2019-11-28",
                                                     "2019-11-29"],
                                            "gateway": ["PROSA", "PROSA", "PROSA"],
                                            "amount": ["$4591", "$4592", "$4593"],
-                                           "order_id": [767313628196, 767313628196, 767313628196]
+                                           "order_id": [767313628196.2, 767313628196, 767313628196]
                                        })

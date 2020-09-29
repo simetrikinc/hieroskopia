@@ -1,4 +1,5 @@
 from pandas import Series
+
 from ..utils.evaluator import Evaluator
 
 
@@ -10,12 +11,13 @@ class NumericAnalyser(object):
     Return a dict with key named 'format'
     with the pandas patterns
     """
+
     @staticmethod
     def numeric_format_matcher(series: Series):
         # Identify stage
         numeric_dict = {
             # -1234 or -1234.12
-            "^[-]?[\\d]+[.]?\\d+": {
+            "^(?=.)([+-]?([0-9]*)(\\.([0-9]+))?)$": {
                 'three_digit_separator': '',
                 'decimal_separator': '.'
             },
@@ -27,14 +29,14 @@ class NumericAnalyser(object):
         }
 
         simple_int_pattern = "\\d+"
-        numeric_format = {
-            'decimal_separator': '',
-            'three_digit_separator': ''
-        }
-        if series.astype(str).str.match(simple_int_pattern).eq(True).all():
-            # Todo: Find  generic pattern or -? \p{Sc} or \p{Sc} -?  to identify currencies
-            # Todo if true then loop dict
-            return numeric_format
+        chars_not_allowed = r'[^\d,.\s\-\+]'
 
-        return numeric_format
-
+        # Trim whitespaces and currencies
+        series = series.astype(str).str.replace(r'[\$€£¥ ]', '', regex=True)
+        if Evaluator.series_match(series, simple_int_pattern) and not Evaluator.series_match(series, chars_not_allowed):
+            format_result = [numeric_format for (re_exp, numeric_format) in
+                             numeric_dict.items() if
+                             Evaluator.series_match(series, re_exp)]
+            return format_result
+        else:
+            return []
