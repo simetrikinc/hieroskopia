@@ -1,9 +1,9 @@
 from pandas import Series
 
-from ..utils.evaluator import Evaluator
+from hieroskopia.utils.evaluator import Evaluator
 
 
-class DateAnalyser(object):
+class InferDatetime(object):
     """
     Receive a column and try to get the date or datetime
     format pattern using regexp.
@@ -12,7 +12,7 @@ class DateAnalyser(object):
     """
 
     @staticmethod
-    def date_format_matcher(series: Series):
+    def infer(series: Series):
         generic_date_pattern = "\\d{1,4}(-|\\/)\\d{1,2}(-|\\/)\\d{1,4}(?:(T| )\\d{2}:\\d{2}(?::\\d{2})?(?:\\.\\d{3,6})?(?:Z|(?: )?AM|(?: )?PM|(?: )?am|(?: )?pm)?)?"
         hour_pattern = "\\d{2}:\\d{2}:\\d{2}"
         dates_dict = {

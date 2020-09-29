@@ -1,9 +1,9 @@
 from pandas import Series
 
-from ..utils.evaluator import Evaluator
+from hieroskopia.utils.evaluator import Evaluator
 
 
-class NumericAnalyser(object):
+class InferNumeric(object):
     """
     Receive a column and try to analyze  the three digit separator,
     the decimal separator and get the numeric format pattern
@@ -11,9 +11,8 @@ class NumericAnalyser(object):
     Return a dict with key named 'format'
     with the pandas patterns
     """
-
     @staticmethod
-    def numeric_format_matcher(series: Series):
+    def infer(series: Series):
         # Identify stage
         numeric_dict = {
             # -1234 or -1234.12

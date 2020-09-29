@@ -1,6 +1,6 @@
 import pandas as pd
 
-from hieroskopia.dates.date_analyser import DateAnalyser
+from hieroskopia import InferDatetime
 
 
 class TestDateAnalyser(object):
@@ -13,9 +13,9 @@ class TestDateAnalyser(object):
         # Loop every df columns
         for col in df.columns:
             # Infer data format
-            result_list.append(DateAnalyser.date_format_matcher(df[col]))
+            result_list.append(InferDatetime.infer(df[col]))
         # Print lists
-        print('\n' '  Result list:', result_list, '\n' 'Expected list:',
+        print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
         assert expected_list == result_list
