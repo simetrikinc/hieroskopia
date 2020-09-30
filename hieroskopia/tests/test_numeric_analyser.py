@@ -2,7 +2,7 @@ import pandas as pd
 from hieroskopia import InferNumeric
 
 
-class TestNumericAnalyser(object):
+class TestNumericAnalyser():
     @staticmethod
     def numeric_analyser_unittest(expected_list: list, data: dict):
         # Create test data frame
