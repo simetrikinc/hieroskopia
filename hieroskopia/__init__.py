@@ -1,0 +1,2 @@
+from hieroskopia.numeric_analyser import InferNumeric
+from hieroskopia.date_analyser import InferDatetime

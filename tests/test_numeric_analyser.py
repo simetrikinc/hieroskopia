@@ -1,6 +1,5 @@
 import pandas as pd
-
-from hieroskopia.numeric.numeric_analyser import NumericAnalyser
+from hieroskopia import InferNumeric
 
 
 class TestNumericAnalyser(object):
@@ -13,9 +12,9 @@ class TestNumericAnalyser(object):
         # Loop every df columns
         for col in df.columns:
             # Infer data format
-            result_list.append(NumericAnalyser.numeric_format_matcher(df[col]))
+            result_list.append(InferNumeric.infer(df[col]))
         # Print lists
-        print('\n' '  Result list:', result_list, '\n' 'Expected list:',
+        print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
         assert expected_list == result_list
@@ -35,6 +34,6 @@ class TestNumericAnalyser(object):
                                                     "2019-11-28",
                                                     "2019-11-29"],
                                            "gateway": ["PROSA", "PROSA", "PROSA"],
-                                           "amount": ["$4591", "$4592", "$4593"],
-                                           "order_id": [767313628196.2, 767313628196, 767313628196]
+                                           "amount": ["$4591", "$4592", "-$.5"],
+                                           "order_id": ['767313628196.2', '76731362819.6', '767313628196']
                                        })
