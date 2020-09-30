@@ -3,7 +3,7 @@ import pandas as pd
 from hieroskopia import InferDatetime
 
 
-class TestDateAnalyser(object):
+class TestDateAnalyser():
     @staticmethod
     def date_analyser_unittest(expected_list: list, data: dict):
         # Create test data frame

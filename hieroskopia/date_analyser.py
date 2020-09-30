@@ -3,7 +3,7 @@ from pandas import Series
 from hieroskopia.utils.evaluator import Evaluator
 
 
-class InferDatetime(object):
+class InferDatetime():
     """
     Receive a column and try to get the date or datetime
     format pattern using regexp.

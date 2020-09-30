@@ -6,7 +6,7 @@ from pandas import Series
 from hieroskopia.utils.evaluator import Evaluator
 
 
-class InferNumeric(object):
+class InferNumeric():
     """
     Receive a column and try to analyze  the three digit separator,
     the decimal separator and get the numeric format pattern
