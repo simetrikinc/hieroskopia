@@ -21,7 +21,7 @@ The hiereskopia package is a library to infer properties like date formats or nu
 
 ````Python
 >>> from hieroskopia import InferDatetime
->>> InferNumeric.infer(pd.Series(["2019-11-27",
+>>> InferDatetime.infer(pd.Series(["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"]))
 >>> {'formats': ['%Y-%m-%d', '%Y/%m/%d']}

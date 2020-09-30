@@ -3,7 +3,7 @@ import pandas as pd
 from hieroskopia import InferDatetime
 
 
-class TestDateAnalyser(object):
+class TestDateAnalyser():
     @staticmethod
     def date_analyser_unittest(expected_list: list, data: dict):
         # Create test data frame
@@ -18,7 +18,8 @@ class TestDateAnalyser(object):
         print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
-        assert expected_list == result_list
+        if expected_list != result_list:
+            raise AssertionError
 
     def test_date_analyser(self):
         """

@@ -6,7 +6,7 @@ from pandas import Series
 from hieroskopia.utils.evaluator import Evaluator
 
 
-class InferNumeric(object):
+class InferNumeric():
     """
     Receive a column and try to analyze  the three digit separator,
     the decimal separator and get the numeric format pattern
@@ -45,5 +45,4 @@ class InferNumeric(object):
                              numeric_dict.items() if
                              Evaluator(series).series_match(re_exp)]
             return format_result
-        else:
-            return []
+        return []

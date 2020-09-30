@@ -2,7 +2,7 @@ import pandas as pd
 from hieroskopia import InferNumeric
 
 
-class TestNumericAnalyser(object):
+class TestNumericAnalyser():
     @staticmethod
     def numeric_analyser_unittest(expected_list: list, data: dict):
         # Create test data frame
@@ -17,7 +17,8 @@ class TestNumericAnalyser(object):
         print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
-        assert expected_list == result_list
+        if expected_list != result_list:
+            raise AssertionError
 
     def test_numeric_analyser(self):
         """
