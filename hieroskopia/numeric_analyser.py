@@ -1,3 +1,6 @@
+import re
+
+import numpy as np
 from pandas import Series
 
 from hieroskopia.utils.evaluator import Evaluator
@@ -11,12 +14,13 @@ class InferNumeric(object):
     Return a dict with key named 'format'
     with the pandas patterns
     """
+
     @staticmethod
     def infer(series: Series):
         # Identify stage
         numeric_dict = {
             # -1234 or -1234.12
-            "^(?=.)([+-]?([0-9]*)(\\.([0-9]+))?)$": {
+            r'^(?=.)([+-]?([0-9]*)(\.([0-9]+))?)$': {
                 'three_digit_separator': '',
                 'decimal_separator': '.'
             },
@@ -27,11 +31,15 @@ class InferNumeric(object):
             }
         }
 
-        simple_int_pattern = "\\d+"
+        simple_int_pattern = r'[-+]?\d+'
         chars_not_allowed = r'[^\d,.\s\-\+]'
 
-        # Trim whitespaces and currencies
+        # Trim whitespaces and currencies, add 0 if start with .
         series = series.astype(str).str.replace(r'[\$€£¥ ]', '', regex=True)
+        series = Series(np.array(
+            [re.sub(r'^(?=.)([+-]?)(\.)([0-9]*)$', '\\g<1>0\\g<2>\\g<3>', str(s)) for s in
+             series.values])) if Evaluator(
+            series).series_contains(r'^(?=.)([+-]?)(\.)([0-9]*)$') else series
         if Evaluator(series).series_match(simple_int_pattern) and not Evaluator(series).series_match(chars_not_allowed):
             format_result = [numeric_format for (re_exp, numeric_format) in
                              numeric_dict.items() if
