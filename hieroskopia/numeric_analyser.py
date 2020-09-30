@@ -45,5 +45,4 @@ class InferNumeric(object):
                              numeric_dict.items() if
                              Evaluator(series).series_match(re_exp)]
             return format_result
-        else:
-            return []
+        return []
