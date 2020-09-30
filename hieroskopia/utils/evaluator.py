@@ -12,4 +12,6 @@ class Evaluator:
         return Series(self.unique_series).astype(str).str.match(pattern).eq(True).all()
 
     def series_contains(self, pattern: str):
-        return Series(self.unique_series).astype(str).str.contains(pattern).eq(True).any()
+        return (
+            Series(self.unique_series).astype(str).str.contains(pattern).eq(True).any()
+        )
