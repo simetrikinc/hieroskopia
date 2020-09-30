@@ -17,7 +17,8 @@ class TestNumericAnalyser():
         print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
-        assert expected_list == result_list
+        if expected_list != result_list:
+            raise AssertionError
 
     def test_numeric_analyser(self):
         """
