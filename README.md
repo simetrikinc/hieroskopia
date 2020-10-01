@@ -37,11 +37,11 @@ of the samples.
 ````Python
 >>> from hieroskopia import InferNumeric
 >>> InferNumeric.infer(pd.Series(['767313628196.2', '76731362819.546', '767313628196']))
->>> {'three_digit_separator': '', 'decimal_separator': '.' }
+>>> {'three_digit_separator': '', 'decimal_separator': '.', 'type':'float'}
 ````
 
 The above method will try to detect and return certain properties in a object type series
-like `three_digit_separator` or `decimal_separator` character that will cover 
+like `datatype`, `three_digit_separator` or `decimal_separator` character that will cover 
 the majority of the samples.
 
 
