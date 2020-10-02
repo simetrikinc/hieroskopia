@@ -27,12 +27,12 @@ class TestNumericAnalyser:
         Special logic:
         Boundary Values:
         """
-        self.numeric_analyser_unittest(expected_list=[[],
-                                                      [],
-                                                      [{'three_digit_separator': '', 'decimal_separator': '.',
-                                                        'type': 'integer'}],
-                                                      [{'three_digit_separator': ',', 'decimal_separator': '.',
-                                                        'type': 'float'}]],
+        self.numeric_analyser_unittest(expected_list=[{},
+                                                      {},
+                                                      {'three_digit_separator': '', 'decimal_separator': '.',
+                                                       'type': 'integer'},
+                                                      {'three_digit_separator': ',', 'decimal_separator': '.',
+                                                       'type': 'float'}],
                                        data={
                                            "date": ["2019-11-27",
                                                     "2019-11-28",

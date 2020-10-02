@@ -51,5 +51,5 @@ class InferNumeric:
                     # Classify as float if the series have the decimal separator found in the regexp
                     format_result.update(type='float') if Evaluator(series).series_contains('\\' + format_result.get(
                         'decimal_separator')) else format_result.update(type='integer')
-                    return [format_result]
-        return []
+                    return format_result
+        return {}
