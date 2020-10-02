@@ -59,7 +59,7 @@ class InferDatetime:
             # Have this column time ?
             formats_dict = datetime_dict if Evaluator(series).series_contains(hour_pattern) else dates_dict
             format_result = {'formats': [date_format for (re_exp, date_format) in formats_dict.items() if
-                             Evaluator(series).series_contains(re_exp)]}
+                                         Evaluator(series).series_contains(re_exp)], 'type': 'datetime'}
             return format_result
 
         return {}

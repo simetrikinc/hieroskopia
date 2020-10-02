@@ -3,8 +3,9 @@ import pandas as pd
 from hieroskopia import InferDatetime
 
 
-class TestDateAnalyser():
+class TestDateAnalyser:
     @staticmethod
+    # Todo: Re use this fragment
     def date_analyser_unittest(expected_list: list, data: dict):
         # Create test data frame
         df = pd.DataFrame(data)
@@ -27,7 +28,7 @@ class TestDateAnalyser():
         Special logic:
         Boundary Values:
         """
-        self.date_analyser_unittest(expected_list=[{'formats': ['%Y-%m-%d', '%Y/%m/%d']}, {}, {}, {}], data={
+        self.date_analyser_unittest(expected_list=[{'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type': 'datetime'}, {}, {}, {}], data={
             "date": ["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"],

@@ -48,7 +48,6 @@ class InferNumeric:
                 # If any regexp match, save this as its format
                 if Evaluator(series).series_match(re_exp):
                     format_result = numeric_format
-                    # Further, Identify if this series contains only integers or float
                     # Classify as float if the series have the decimal separator found in the regexp
                     format_result.update(type='float') if Evaluator(series).series_contains('\\' + format_result.get(
                         'decimal_separator')) else format_result.update(type='integer')
