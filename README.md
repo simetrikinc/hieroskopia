@@ -24,7 +24,7 @@ The hiereskopia package is a library to infer properties like date formats or nu
 >>> InferDatetime.infer(pd.Series(["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"]))
->>> {'formats': ['%Y-%m-%d', '%Y/%m/%d']}
+>>> {'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type':'datetime'}
 ````
 
 The above method works with a best guess approach to detect a format in a object type series and try 
