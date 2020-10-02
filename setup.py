@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hieroskopia",
-    version="0.0.6",
+    version="0.0.7",
     author="Simetrik Inc",
     author_email="opensource@simetrik.com",
     description="The hiereskopia package is a library to infer properties like date formats or numeric separators in pandas series of type object or string.",
