@@ -8,8 +8,8 @@ The hiereskopia package is a library to infer properties like date formats or nu
 ### Date-times:
 - Support to dates and datetime format
 - This library receive a series as input and try to return
- a dictionary with the format found in the series Based on the 1989 C 
- Standard date time  format code
+ a dictionary with the format found in the series Based on the 1989 C (__Default__) 
+ or Snowflake Standard date time  format code. 
 
 ### Numeric:
 - This library receive a series as input and try to return
@@ -26,9 +26,16 @@ The hiereskopia package is a library to infer properties like date formats or nu
                      "2018-11-08"]))
 >>> {'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type':'datetime'}
 ````
-
+Using `return_format` parameter  
+````Python
+>>> from hieroskopia import InferDatetime
+>>> InferDatetime.infer(pd.Series(["2019-11-27",
+                     "2019/11/28",
+                     "2018-11-08"]), return_format='snowflake')
+>>> {'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type':'datetime'}
+````
 The above method works with a best guess approach to detect a format in a object type series and try 
-to return a `datetime.strftime`/`strptime` format that will cover or parse the majority
+to return a `datetime.strftime`/`strptime` or `snowflake` format that will cover or parse the majority
 of the samples.
 
 
@@ -46,7 +53,6 @@ the majority of the samples.
 
 
 ## To do:
-- Specify another output standard format to support java date format, snowflake date characters definition etc.
 - Feed more regular expressions
 - Add Time format
 - Develop multiple algorithms to get a better precision.
