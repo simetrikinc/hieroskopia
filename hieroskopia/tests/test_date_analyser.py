@@ -1,4 +1,5 @@
 import pandas as pd
+import pytest
 
 from hieroskopia import InferDatetime
 
@@ -21,34 +22,21 @@ class TestDateAnalyser:
         if expected_list != result_list:
             raise AssertionError
 
-    def test_date_analyser(self):
+    @pytest.mark.parametrize('return_formats, expected',
+                             [('snowflake', ['yyyy-mm-dd', 'yyyy/mm/dd']), ('java', ['yyyy-MM-dd', 'yyyy/MM/dd']),
+                              ('C89', ['%Y-%m-%d', '%Y/%m/%d'])])
+    def test_date_analyser(self, return_formats, expected):
         """
         Bad argument:
         Special logic:
         Boundary Values:
         """
         self.date_analyser_unittest(
-            expected_list=[{'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type': 'datetime'}, {}, {}, {}], data={
+            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {}], data={
                 "date": ["2019-11-27",
                          "2019/11/28",
                          "2018-11-08"],
                 "gateway": ["PROSA", "PROSA", "PROSA"],
                 "amount": ["$4591", "$4592", "$4593"],
                 "order_id": [767313628196, 767313628196, 767313628196]
-            })
-
-    def test_date_analyser_snowflake(self):
-        """
-        Bad argument:
-        Special logic:
-        Boundary Values:
-        """
-        self.date_analyser_unittest(
-            expected_list=[{'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type': 'datetime'}, {}, {}, {}], data={
-                "date": ["2019-11-27",
-                         "2019/11/28",
-                         "2018-11-08"],
-                "gateway": ["PROSA", "PROSA", "PROSA"],
-                "amount": ["$4591", "$4592", "$4593"],
-                "order_id": [767313628196, 767313628196, 767313628196]
-            }, return_format='snowflake')
+            }, return_format=return_formats)
