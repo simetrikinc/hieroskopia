@@ -34,8 +34,16 @@ Using `return_format` parameter
                      "2018-11-08"]), return_format='snowflake')
 >>> {'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type':'datetime'}
 ````
+
+````Python
+>>> from hieroskopia import InferDatetime
+>>> InferDatetime.infer(pd.Series(["2019-11-27",
+                     "2019/11/28",
+                     "2018-11-08"]), return_format='java')
+>>> {'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type':'datetime'}
+````
 The above method works with a best guess approach to detect a format in a object type series and try 
-to return a `datetime.strftime`/`strptime` or `snowflake` format that will cover or parse the majority
+to return a `datetime.strftime`/`strptime`, `Snowflake Date format`, `Java Simple Date Format` format that will cover or parse the majority
 of the samples.
 
 
