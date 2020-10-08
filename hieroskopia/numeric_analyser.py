@@ -34,8 +34,12 @@ class InferNumeric:
         simple_int_pattern = r'[-+]?\d+'
         chars_not_allowed = r'[^\d,.\-\+]'
 
-        # Trim whitespaces and currencies, add 0 if start with .
-        series = series.astype(str).str.replace(r'[\$€£¥ ]', '', regex=True)
+        # Todo: Add more currencies symbols and code
+        # Trim Currencies
+        series = series.astype(str).str.replace(r'[\$€£¥R]', '', regex=True)
+        # Trim lateral spaces
+        series = series.str.strip()
+        # Add 0 if start with .
         series = Series(np.array(
             [re.sub(r'^(?=.)([+-]?)(\.)([0-9]*)$', '\\g<1>0\\g<2>\\g<3>', str(s)) for s in
              series.values])) if Evaluator(
