@@ -34,7 +34,7 @@ class InferNumeric:
         simple_int_pattern = r'[-+]?\d+'
         chars_not_allowed = r'[^\d,.\-\+]'
 
-        # Todo: Add more currencies symbols and code
+        # Todo: Add more currencies symbols and code & Support intermediate space by parameter
         # Trim Currencies
         series = series.astype(str).str.replace(r'[\$€£¥R]', '', regex=True)
         # Trim lateral spaces
