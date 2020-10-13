@@ -40,3 +40,22 @@ class TestDateAnalyser:
                 "amount": ["$4591", "$4592", "$4593"],
                 "order_id": [767313628196, 767313628196, 767313628196]
             }, return_format=return_formats)
+
+    @pytest.mark.parametrize('return_formats, expected',
+                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss']), ('java', ['yyyy-MM-dd hh:mm:ss', 'yyyy/MM/dd hh:mm:ss']),
+                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S'])])
+    def test_datetime_analyser(self, return_formats, expected):
+        """
+        Bad argument:
+        Special logic:
+        Boundary Values:
+        """
+        self.date_analyser_unittest(
+            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {}], data={
+                "date": ["2019-11-27 12:00:00",
+                         "2019/11/28 12:00:00",
+                         "2018-11-08 12:00:00"],
+                "gateway": ["PROSA", "PROSA", "PROSA"],
+                "amount": ["$4591", "$4592", "$4593"],
+                "order_id": [767313628196, 767313628196, 767313628196]
+            }, return_format=return_formats)
