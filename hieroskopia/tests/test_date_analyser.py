@@ -42,7 +42,7 @@ class TestDateAnalyser:
             }, return_format=return_formats)
 
     @pytest.mark.parametrize('return_formats, expected',
-                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss']), ('java', ['yyyy-MM-dd hh:mm:ss', 'yyyy/MM/dd hh:mm:ss']),
+                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss']), ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss']),
                               ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S'])])
     def test_datetime_analyser(self, return_formats, expected):
         """
