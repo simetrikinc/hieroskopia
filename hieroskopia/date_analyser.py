@@ -38,35 +38,35 @@ class InferDatetime:
             # 1930-08-05 12:00:05
             "^\\d{4}-\\d{1,2}-\\d{1,2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%Y-%m-%d %H:%M:%S",
                                                                 'snowflake': 'yyyy-MM-dd hh:mi:ss',
-                                                                'java': 'yyyy-MM-dd hh:mm:ss'},
+                                                                'java': 'yyyy-MM-dd HH:mm:ss'},
             # 08-05-30 12:00:05
             "^\\d{1,2}-\\d{1,2}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%y %H:%M:%S",
                                                                  'snowflake': 'mm-dd-yy hh:mi:ss',
-                                                                 'java': 'MM-dd-yy hh:mm:ss'},
+                                                                 'java': 'MM-dd-yy HH:mm:ss'},
             # 08-05-1930 12:00:05
             "^\\d{1,2}-\\d{1,2}-\\d{4}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%Y %H:%M:%S",
                                                                  'snowflake': 'mm-dd-yyyy hh:mi:ss',
-                                                                 'java': 'MM-dd-yyyy hh:mm:ss'},
+                                                                 'java': 'MM-dd-yyyy HH:mm:ss'},
             # 8-5-30 12:00:05
             "^\\d{1}-\\d{1}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-m/%-d/%y %H:%M:%S",
                                                              'snowflake': 'mm-dd-yy hh:mi:ss',
-                                                             'java': 'M-d-yy hh:mm:ss'},
+                                                             'java': 'M-d-yy HH:mm:ss'},
             # 1930/08/05 12:00:05
             "^\\d{4}/\\d{1,2}/\\d{1,2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%Y/%m/%d %H:%M:%S",
                                                                 'snowflake': 'yyyy/MM/dd hh:mi:ss',
-                                                                'java': 'yyyy/MM/dd hh:mm:ss'},
+                                                                'java': 'yyyy/MM/dd HH:mm:ss'},
             # 08/05/30 12:00:05
             "^\\d{1,2}/\\d{1,2}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m/%d/%y %H:%M:%S",
                                                                 'snowflake': 'MM /dd/yy hh:mi:ss',
-                                                                'java': 'MM/dd/yy hh:mm:ss'},
+                                                                'java': 'MM/dd/yy HH:mm:ss'},
             # 08/05/1930 12:00:05
             "^\\d{1,2}/\\d{1,2}/\\d{4} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%Y %H:%M:%S",
                                                                 'snowflake': 'MM/dd/yyyy hh:mi:ss',
-                                                                'java': 'MM/dd/yyyy hh:mm:ss'},
+                                                                'java': 'MM/dd/yyyy HH:mm:ss'},
             # 8/5/30 12:00:05
             "^\\d{1}/\\d{1}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-m/%-d/%y %H:%M:%S",
                                                             'snowflake': 'MM/dd/yy hh:mi:ss',
-                                                            'java': 'M/d/yy hh:mm:ss'},
+                                                            'java': 'M/d/yy HH:mm:ss'},
             # 2019-11-27T12:00:05.000Z
             "^\\d{4}-\\d{1,2}-\\d{1,2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$": {"C89": "%Y-%m-%dT%H:%M:%S.%fZ",
                                                                         'snowflake': 'yyyy-MM-ddTHH:mm:ss.SSZ',
