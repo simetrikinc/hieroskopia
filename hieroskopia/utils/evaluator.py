@@ -1,5 +1,9 @@
 from pandas import Series
 
+import warnings
+# This warning is alerting that the regex uses a capturing group but the match is not used.
+warnings.filterwarnings("ignore", 'This pattern has match groups')
+
 
 class Evaluator:
     series: Series
