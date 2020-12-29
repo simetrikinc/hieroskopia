@@ -1,6 +1,7 @@
+import warnings
+
 from pandas import Series
 
-import warnings
 # This warning is alerting that the regex uses a capturing group but the match is not used.
 warnings.filterwarnings("ignore", 'This pattern has match groups')
 
@@ -16,6 +17,8 @@ class Evaluator:
         """
         Evaluate if all series match the pattern
         """
+        if len(self.unique_series) == 0:
+            return False
         return Series(
             self.unique_series).astype(str).str.match(pattern).eq(True).all()
 
