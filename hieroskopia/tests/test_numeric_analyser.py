@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 from hieroskopia import InferNumeric
 
 
@@ -32,7 +32,7 @@ class TestNumericAnalyser:
                                                       {'three_digit_separator': '', 'decimal_separator': '.',
                                                        'type': 'integer'},
                                                       {'three_digit_separator': ',', 'decimal_separator': '.',
-                                                       'type': 'float'}, {}],
+                                                       'type': 'float'}, {}, {}],
                                        data={
                                            "date": ["2019-11-27",
                                                     "2019-11-28",
@@ -44,5 +44,6 @@ class TestNumericAnalyser:
                                                ';20200626;20201228;20210628;20211227;20220628;20221226;20230626;20231226;20240626;20241226;20250626;20251226',
                                                ';20200626;20201228;20210628;20211227;20220628;20221226;20230626;20231226;20240626;20241226;20250626;20251226',
                                                ';20200626;20201228;20210628;20211227;20220628;20221226;20230626;20231226;20240626;20241226;20250626;20251226'
-                                           ]
+                                           ],
+                                           "nan": [np.nan, np.nan, np.nan]
                                        })
