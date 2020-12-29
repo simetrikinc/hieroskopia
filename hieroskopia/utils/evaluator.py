@@ -19,9 +19,8 @@ class Evaluator:
         """
         if len(self.unique_series) == 0:
             return False
-        else:
-            return Series(
-                self.unique_series).astype(str).str.match(pattern).eq(True).all()
+        return Series(
+            self.unique_series).astype(str).str.match(pattern).eq(True).all()
 
     def series_contains(self, pattern: str):
         """
