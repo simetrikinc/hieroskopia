@@ -1,6 +1,7 @@
+import numpy as np
 import pandas as pd
 import pytest
-import numpy as np
+
 from hieroskopia import InferDatetime
 
 
@@ -32,7 +33,7 @@ class TestDateAnalyser:
         Boundary Values:
         """
         self.date_analyser_unittest(
-            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {},{}], data={
+            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {}, {}], data={
                 "date": ["2019-11-27",
                          "2019/11/28",
                          "2018-11-08"],
@@ -43,8 +44,9 @@ class TestDateAnalyser:
             }, return_format=return_formats)
 
     @pytest.mark.parametrize('return_formats, expected',
-                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss']), ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss']),
-                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S'])])
+                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss', 'yyyy-MM-dd HH:mm:ss.SS']),
+                              ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss', 'yyyy-MM-dd HH:mm:ss.SS']),
+                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S', "%Y-%m-%d %H:%M:%S.%f"])])
     def test_datetime_analyser(self, return_formats, expected):
         """
         Bad argument:
@@ -52,12 +54,13 @@ class TestDateAnalyser:
         Boundary Values:
         """
         self.date_analyser_unittest(
-            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {},{}], data={
+            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {},
+                           {}, {}], data={
                 "date": ["2019-11-27 12:00:00",
                          "2019/11/28 12:00:00",
-                         "2018-11-08 12:00:00"],
-                "gateway": ["PROSA", "PROSA", "PROSA"],
-                "amount": ["$4591", "$4592", "$4593"],
-                "order_id": [767313628196, 767313628196, 767313628196],
-                "nan": [np.nan, np.nan, np.nan]
+                         '2020-12-01 14:11:34.000', np.nan],
+                "gateway": ["PROSA", "PROSA", "PROSA", "PROSA"],
+                "amount": ["$4591", "$4592", "$4593", "$4593"],
+                "order_id": [767313628196, 767313628196, 767313628196, 767313628196],
+                "nan": [np.nan, np.nan, np.nan, np.nan]
             }, return_format=return_formats)
