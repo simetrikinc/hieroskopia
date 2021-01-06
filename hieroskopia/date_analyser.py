@@ -67,10 +67,17 @@ class InferDatetime:
             "^\\d{1}/\\d{1}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-m/%-d/%y %H:%M:%S",
                                                             'snowflake': 'MM/dd/yy hh:mi:ss',
                                                             'java': 'M/d/yy HH:mm:ss'},
+
+            # 2019-11-27 12:00:05.000
+            "^\\d{4}-\\d{1,2}-\\d{1,2} \\d{2}:\\d{2}:\\d{2}.\\d{3}$": {"C89": "%Y-%m-%d %H:%M:%S.%f",
+                                                                       'snowflake': 'yyyy-MM-dd HH:mm:ss.SS',
+                                                                       'java': "yyyy-MM-dd HH:mm:ss.SS"},
+
             # 2019-11-27T12:00:05.000Z
             "^\\d{4}-\\d{1,2}-\\d{1,2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$": {"C89": "%Y-%m-%dT%H:%M:%S.%fZ",
                                                                         'snowflake': 'yyyy-MM-ddTHH:mm:ss.SSZ',
                                                                         'java': "yyyy-MM-dd'T'HH:mm:ss.SS'Z'"}
+
         }
         # Have this column a generic date format ?
         if Evaluator(series).series_match(generic_date_pattern):
