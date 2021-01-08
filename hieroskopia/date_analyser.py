@@ -20,19 +20,19 @@ class InferDatetime:
             # 1930-08-05
             "^\\d{4}-\\d{1,2}-\\d{1,2}$": {"C89": "%Y-%m-%d", 'snowflake': 'yyyy-mm-dd', 'java': 'yyyy-MM-dd'},
             # 08-05-30
-            "^\\d{1,2}-\\d{1,2}-\\d{2}$": {"C89": "%m-%d-%y", 'snowflake': 'mm-dd-yy', 'java': 'MM-dd-yy'},
+            "^\\d{1,2}-\\d{1,2}-\\d{2}$": {"C89": "%d-%m-%y", 'snowflake': 'dd-mm-yy', 'java': 'dd-MM-yy'},
             # 08-05-1930
-            "^\\d{1,2}-\\d{1,2}-\\d{4}$": {"C89": "%m-%d-%Y", 'snowflake': 'mm-dd-yyyy', 'java': 'MM-dd-yyyy'},
+            "^\\d{1,2}-\\d{1,2}-\\d{4}$": {"C89": "%d-%m-%Y", 'snowflake': 'dd-mm-yyyy', 'java': 'dd-MM-yyyy'},
             # 8-5-30
-            "^\\d{1}-\\d{1}-\\d{2}$": {"C89": "%-m/%-d/%y", 'snowflake': 'mm-dd-yy', 'java': 'M-d-yy'},
+            "^\\d{1}-\\d{1}-\\d{2}$": {"C89": "%-d/%-m/%y", 'snowflake': 'dd-mm-yy', 'java': 'd-M-yy'},
             # 1930/08/05
             "^\\d{4}/\\d{1,2}/\\d{1,2}$": {"C89": "%Y/%m/%d", 'snowflake': 'yyyy/mm/dd', 'java': 'yyyy/MM/dd'},
             # 08/05/30
-            "^\\d{1,2}/\\d{1,2}/\\d{2}$": {"C89": "%m/%d/%y", 'snowflake': 'mm/dd/yy', 'java': 'MM/dd/yy'},
+            "^\\d{1,2}/\\d{1,2}/\\d{2}$": {"C89": "%d/%m/%y", 'snowflake': 'dd/mm/yy', 'java': 'dd/MM/yy'},
             # 08/05/1930
-            "^\\d{1,2}/\\d{1,2}/\\d{4}$": {"C89": "%m-%d-%Y", 'snowflake': 'mm/dd/yyyy', 'java': 'MM/dd/yyyy'},
+            "^\\d{1,2}/\\d{1,2}/\\d{4}$": {"C89": "%d-%m-%Y", 'snowflake': 'dd/mm/yyyy', 'java': 'dd/MM/yyyy'},
             # 8/5/30
-            "^\\d{1}/\\d{1}/\\d{2}$": {"C89": "%-m/%-d/%y", 'snowflake': 'mm/dd/yy', 'java': 'M/d/yy'},
+            "^\\d{1}/\\d{1}/\\d{2}$": {"C89": "%-d/%-m/%y", 'snowflake': 'dd/mm/yy', 'java': 'd/M/yy'},
         }
         datetime_dict = {
             # 1930-08-05 12:00:05
@@ -40,33 +40,33 @@ class InferDatetime:
                                                                 'snowflake': 'yyyy-MM-dd hh:mi:ss',
                                                                 'java': 'yyyy-MM-dd HH:mm:ss'},
             # 08-05-30 12:00:05
-            "^\\d{1,2}-\\d{1,2}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%y %H:%M:%S",
-                                                                 'snowflake': 'mm-dd-yy hh:mi:ss',
-                                                                 'java': 'MM-dd-yy HH:mm:ss'},
+            "^\\d{1,2}-\\d{1,2}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%d-%m-%y %H:%M:%S",
+                                                                 'snowflake': 'dd-mm-yy hh:mi:ss',
+                                                                 'java': 'dd-MM-yy HH:mm:ss'},
             # 08-05-1930 12:00:05
-            "^\\d{1,2}-\\d{1,2}-\\d{4}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%Y %H:%M:%S",
-                                                                 'snowflake': 'mm-dd-yyyy hh:mi:ss',
-                                                                 'java': 'MM-dd-yyyy HH:mm:ss'},
+            "^\\d{1,2}-\\d{1,2}-\\d{4}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%d-%m-%Y %H:%M:%S",
+                                                                 'snowflake': 'dd-mm-yyyy hh:mi:ss',
+                                                                 'java': 'dd-MM-yyyy HH:mm:ss'},
             # 8-5-30 12:00:05
-            "^\\d{1}-\\d{1}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-m/%-d/%y %H:%M:%S",
-                                                             'snowflake': 'mm-dd-yy hh:mi:ss',
-                                                             'java': 'M-d-yy HH:mm:ss'},
+            "^\\d{1}-\\d{1}-\\d{2}$ \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-d/%-m/%y %H:%M:%S",
+                                                             'snowflake': 'dd-mm-yy hh:mi:ss',
+                                                             'java': 'd-M-yy HH:mm:ss'},
             # 1930/08/05 12:00:05
             "^\\d{4}/\\d{1,2}/\\d{1,2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%Y/%m/%d %H:%M:%S",
                                                                 'snowflake': 'yyyy/MM/dd hh:mi:ss',
                                                                 'java': 'yyyy/MM/dd HH:mm:ss'},
             # 08/05/30 12:00:05
-            "^\\d{1,2}/\\d{1,2}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m/%d/%y %H:%M:%S",
-                                                                'snowflake': 'MM /dd/yy hh:mi:ss',
-                                                                'java': 'MM/dd/yy HH:mm:ss'},
+            "^\\d{1,2}/\\d{1,2}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%d/%m/%y %H:%M:%S",
+                                                                'snowflake': 'dd/MM/yy hh:mi:ss',
+                                                                'java': 'dd/MM/yy HH:mm:ss'},
             # 08/05/1930 12:00:05
-            "^\\d{1,2}/\\d{1,2}/\\d{4} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%m-%d-%Y %H:%M:%S",
-                                                                'snowflake': 'MM/dd/yyyy hh:mi:ss',
-                                                                'java': 'MM/dd/yyyy HH:mm:ss'},
+            "^\\d{1,2}/\\d{1,2}/\\d{4} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%d-%m-%Y %H:%M:%S",
+                                                                'snowflake': 'dd/MM/yyyy hh:mi:ss',
+                                                                'java': 'dd/MM/yyyy HH:mm:ss'},
             # 8/5/30 12:00:05
-            "^\\d{1}/\\d{1}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-m/%-d/%y %H:%M:%S",
-                                                            'snowflake': 'MM/dd/yy hh:mi:ss',
-                                                            'java': 'M/d/yy HH:mm:ss'},
+            "^\\d{1}/\\d{1}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-d/%-m/%y %H:%M:%S",
+                                                            'snowflake': 'dd/MM/yy hh:mi:ss',
+                                                            'java': 'd/M/yy HH:mm:ss'},
 
             # 2019-11-27 12:00:05.000
             "^\\d{4}-\\d{1,2}-\\d{1,2} \\d{2}:\\d{2}:\\d{2}.\\d{3}$": {"C89": "%Y-%m-%d %H:%M:%S.%f",
