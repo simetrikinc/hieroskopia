@@ -20,8 +20,7 @@ class TestDateAnalyser:
         print('\n', '  Result list:', result_list, '\n', 'Expected list:',
               expected_list)
         # Test lists
-        if expected_list != result_list:
-            raise AssertionError
+        assert expected_list == result_list
 
     @pytest.mark.parametrize('return_formats, expected',
                              [('snowflake', ['yyyy-mm-dd', 'yyyy/mm/dd']), ('java', ['yyyy-MM-dd', 'yyyy/MM/dd']),
