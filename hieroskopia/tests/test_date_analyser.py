@@ -59,7 +59,7 @@ class TestDateAnalyser:
                          "2019/11/28 12:00:00",
                          '2020-12-01 14:11:34.000', np.nan],
                 "gateway": ["PROSA", "PROSA", "PROSA", "PROSA"],
-                "amount": ["$4591", "$4592", "$4593", "$4593"],
+                "amount": ["$4591", "$4592", "$4593", "$4594"],
                 "order_id": [767313628196, 767313628196, 767313628196, 767313628196],
                 "nan": [np.nan, np.nan, np.nan, np.nan]
             }, return_format=return_formats)
