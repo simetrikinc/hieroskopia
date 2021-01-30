@@ -11,3 +11,5 @@ hieroskopia_pkg_simetrik.egg-info/*
 # Testing
 .coverage
 coverage.xml
+.deepsource.toml
+htmlcov/*
