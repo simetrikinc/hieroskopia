@@ -32,7 +32,7 @@ class TestDateAnalyser:
         Boundary Values:
         """
         self.date_analyser_unittest(
-            expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {}, {}, {}], data={
+            expected_list=[{'formats': expected, 'type': 'date'}, {}, {}, {}, {}], data={
                 "date": ["2019-11-27",
                          "2019/11/28",
                          "2018-11-08"],
