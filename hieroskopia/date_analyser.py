@@ -82,9 +82,14 @@ class InferDatetime:
         # Have this column a generic date format ?
         if Evaluator(series).series_match(generic_date_pattern):
             # Have this column time ?
-            formats_dict = datetime_dict if Evaluator(series).series_contains(hour_pattern) else dates_dict
+            format_type = 'datetime'
+            if Evaluator(series).series_contains(hour_pattern):
+                formats_dict = datetime_dict
+            else:
+                formats_dict = dates_dict
+                format_type = 'date'
             format_result = {
                 'formats': [date_format.get(return_format) for (re_exp, date_format) in formats_dict.items() if
-                            Evaluator(series).series_contains(re_exp)], 'type': 'datetime'}
+                            Evaluator(series).series_contains(re_exp)], 'type': format_type}
             return format_result
         return {}
