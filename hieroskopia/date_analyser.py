@@ -73,16 +73,21 @@ class InferDatetime:
                                                                    'snowflake': 'yyyy-MM-dd HH:mm:ss.S',
                                                                    'java': "yyyy-MM-dd HH:mm:ss.S"},
 
+            # 2019-11-27T12:00:05.000Z
+            r"^\d{4}-\d{1,2}-\d{1,2}T\d{2}:\d{2}:\d{2}.\d{3,6}Z": {"C89": "%Y-%m-%dT%H:%M:%S.%fZ",
+                                                                   'snowflake': 'yyyy-MM-ddTHH:mm:ss.SZ',
+                                                                   'java': "yyyy-MM-dd'T'HH:mm:ss.S'Z'"},
             # 2019-11-27 12:00:05.0000000000 special case
             # Others workarounds: [:26], Capture 6 digits after dot in a group, etc...
             # Todo: Delete on snowflake casts
             r"^\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}.\d{10}$": {"C89": "%Y-%m-%d %H:%M:%S.%f0000",
                                                                   'snowflake': "yyyy-MM-dd HH:mm:ss.S0000",
                                                                   'java': "yyyy-MM-dd HH:mm:ss.S0000"},
-            # 2019-11-27T12:00:05.000Z
-            r"^\d{4}-\d{1,2}-\d{1,2}T\d{2}:\d{2}:\d{2}.\d{3,6}Z": {"C89": "%Y-%m-%dT%H:%M:%S.%fZ",
-                                                                   'snowflake': 'yyyy-MM-ddTHH:mm:ss.SZ',
-                                                                   'java': "yyyy-MM-dd'T'HH:mm:ss.S'Z'"}
+
+            r"^\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}.\d{9}$": {"C89": "%Y-%m-%d %H:%M:%S.%f000",
+                                                                  'snowflake': "yyyy-MM-dd HH:mm:ss.S000",
+                                                                  'java': "yyyy-MM-dd HH:mm:ss.S000"},
+
 
         }
         # Have this column a generic date format ?
