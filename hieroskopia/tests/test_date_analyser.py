@@ -43,9 +43,9 @@ class TestDateAnalyser:
             }, return_format=return_formats)
 
     @pytest.mark.parametrize('return_formats, expected',
-                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss', 'yyyy-MM-dd HH:mm:ss.S']),
-                              ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss', 'yyyy-MM-dd HH:mm:ss.SS']),
-                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S', "%Y-%m-%d %H:%M:%S.%f"])])
+                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss', "yyyy-MM-dd HH:mm:ss.S0000"]),
+                              ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss', "yyyy-MM-dd HH:mm:ss.S0000"]),
+                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S', "%Y-%m-%d %H:%M:%S.%f0000"])])
     def test_datetime_analyser(self, return_formats, expected):
         """
         Bad argument:
