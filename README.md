@@ -17,14 +17,14 @@ The hiereskopia package is a library to infer properties like date formats or nu
 
 ## Usage
 
-#### Infer datetime
+#### Infer datetime or date
 
 ````Python
 >>> from hieroskopia import InferDatetime
 >>> InferDatetime.infer(pd.Series(["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"]))
->>> {'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type':'datetime'}
+>>> {'formats': ['%Y-%m-%d', '%Y/%m/%d'], 'type':'date'}
 ````
 Using `return_format` parameter  
 ````Python
@@ -32,7 +32,7 @@ Using `return_format` parameter
 >>> InferDatetime.infer(pd.Series(["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"]), return_format='snowflake')
->>> {'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type':'datetime'}
+>>> {'formats': ['yyyy-mm-dd', 'yyyy/mm/dd'], 'type':'date'}
 ````
 
 ````Python
@@ -40,7 +40,7 @@ Using `return_format` parameter
 >>> InferDatetime.infer(pd.Series(["2019-11-27",
                      "2019/11/28",
                      "2018-11-08"]), return_format='java')
->>> {'formats': ['yyyy-MM-dd', 'yyyy/MM/dd'], 'type':'datetime'}
+>>> {'formats': ['yyyy-MM-dd', 'yyyy/MM/dd'], 'type':'date'}
 ````
 The above method works with a best guess approach to detect a format in a object type series and try 
 to return a `datetime.strftime`/`strptime`, `Snowflake Date format`, `Java Simple Date Format` format that will cover or parse the majority
@@ -58,9 +58,3 @@ of the samples.
 The above method will try to detect and return certain properties in a object type series
 like `datatype`, `three_digit_separator` or `decimal_separator` character that will cover 
 the majority of the samples.
-
-
-## To do:
-- Feed more regular expressions
-- Add Time format
-- Develop multiple algorithms to get a better precision.
