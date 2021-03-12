@@ -63,6 +63,12 @@ class InferDatetime:
             "^\\d{1,2}/\\d{1,2}/\\d{4} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%d-%m-%Y %H:%M:%S",
                                                                 'snowflake': 'dd/MM/yyyy hh:mi:ss',
                                                                 'java': 'dd/MM/yyyy HH:mm:ss'},
+
+            # 08/05/1930 12:00
+            "^\\d{1,2}/\\d{1,2}/\\d{4} \\d{2}:\\d{2}$": {"C89": "%d/%m/%Y %H:%M",
+                                                                'snowflake': 'dd/MM/yyyy hh:mi',
+                                                                'java': 'dd/MM/yyyy HH:mm'},
+
             # 8/5/30 12:00:05
             "^\\d{1}/\\d{1}/\\d{2} \\d{2}:\\d{2}:\\d{2}$": {"C89": "%-d/%-m/%y %H:%M:%S",
                                                             'snowflake': 'dd/MM/yy hh:mi:ss',

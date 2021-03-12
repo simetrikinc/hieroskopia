@@ -43,9 +43,9 @@ class TestDateAnalyser:
             }, return_format=return_formats)
 
     @pytest.mark.parametrize('return_formats, expected',
-                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'yyyy/MM/dd hh:mi:ss', "yyyy-MM-dd HH:mm:ss.S0000"]),
-                              ('java', ['yyyy-MM-dd HH:mm:ss', 'yyyy/MM/dd HH:mm:ss', "yyyy-MM-dd HH:mm:ss.S0000"]),
-                              ('C89', ['%Y-%m-%d %H:%M:%S', '%Y/%m/%d %H:%M:%S', "%Y-%m-%d %H:%M:%S.%f0000"])])
+                             [('snowflake', ['yyyy-MM-dd hh:mi:ss', 'dd/MM/yyyy hh:mi', "yyyy-MM-dd HH:mm:ss.S0000"]),
+                              ('java', ['yyyy-MM-dd HH:mm:ss', 'dd/MM/yyyy HH:mm', "yyyy-MM-dd HH:mm:ss.S0000"]),
+                              ('C89', ['%Y-%m-%d %H:%M:%S', '%d/%m/%Y %H:%M', "%Y-%m-%d %H:%M:%S.%f0000"])])
     def test_datetime_analyser(self, return_formats, expected):
         """
         Bad argument:
@@ -56,7 +56,7 @@ class TestDateAnalyser:
             expected_list=[{'formats': expected, 'type': 'datetime'}, {}, {},
                            {}, {}], data={
                 "date": ["2019-11-27 12:00:00",
-                         "2019/11/28 12:00:00",
+                         "28/11/2018 12:00",
                          '2021-01-12 13:23:45.0000000000', np.nan],
                 "gateway": ["PROSA", "PROSA", "PROSA", "PROSA"],
                 "amount": ["$4591", "$4592", "$4593", "$4594"],
