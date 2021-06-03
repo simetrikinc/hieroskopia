@@ -15,6 +15,7 @@ class InferDatetime:
     def infer(series: Series, return_format='C89'):
         generic_date_pattern = "\\d{1,4}(-|\\/)\\d{1,2}(-|\\/)\\d{1,4}(?:(T| )\\d{2}:\\d{2}(?::\\d{2})?(?:\\.\\d{3,6})?(?:Z|(?: )?AM|(?: )?PM|(?: )?am|(?: )?pm)?)?"
         hour_pattern = "\\d{2}:\\d{2}:\\d{2}"
+        alternative_hour_pattern = "\\d{2}:\\d{2}"
         dates_dict = {
             # Todo: Add string dates like ( 03 May 2020)
             # 1930-08-05
@@ -100,7 +101,7 @@ class InferDatetime:
         if Evaluator(series).series_match(generic_date_pattern):
             # Have this column time ?
             format_type = 'datetime'
-            if Evaluator(series).series_contains(hour_pattern):
+            if Evaluator(series).series_contains(hour_pattern) or Evaluator(series).series_contains(alternative_hour_pattern):
                 formats_dict = datetime_dict
             else:
                 formats_dict = dates_dict
