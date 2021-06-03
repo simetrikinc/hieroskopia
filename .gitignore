@@ -13,3 +13,7 @@ hieroskopia_pkg_simetrik.egg-info/*
 coverage.xml
 .deepsource.toml
 htmlcov/*
+
+# Cache
+__pychache__
+__pychache__/*
