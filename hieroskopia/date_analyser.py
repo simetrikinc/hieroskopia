@@ -76,7 +76,7 @@ class InferDatetime:
                                                             'java': 'd/M/yy HH:mm:ss'},
 
             # 2019-11-27 12:00:05.000000
-            r"^\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}.\d{3,6}$": {"C89": "%Y-%m-%d %H:%M:%S.%f",
+            r"^\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}.\d{1,6}$": {"C89": "%Y-%m-%d %H:%M:%S.%f",
                                                                    'snowflake': 'yyyy-MM-dd HH:mm:ss.S',
                                                                    'java': "yyyy-MM-dd HH:mm:ss.S"},
 
