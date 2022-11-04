@@ -20,7 +20,10 @@ jobs:
       - name: pruebas+coverage
         id: pruebas
         run: | 
-          pytest --cov-report term --cov-report xml:coverage.xml
+          pytest --cov-report term --cov-report xml:coverage.xml --cov=hieroskopia
+      - name: fix code coverage paths
+        run: |
+          sed -i 's/\/home\/runner\/work\/hieroskopia\/hieroskopia\//\/github\/workspace\//g' coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
