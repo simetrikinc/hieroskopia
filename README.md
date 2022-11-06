@@ -1,7 +1,4 @@
 # Hieroskopia
-[![codecov](https://codecov.io/gh/simetrikinc/hieroskopia/branch/master/graph/badge.svg)](https://codecov.io/gh/simetrikinc/hieroskopia)
-
-
 The hiereskopia package is a library to infer properties like date formats or numeric separators in pandas series of type object or string. 
 
 ## Support 
