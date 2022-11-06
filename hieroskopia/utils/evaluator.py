@@ -28,3 +28,11 @@ class Evaluator:
         """
         return (Series(self.unique_series).astype(str).str.contains(
             pattern).eq(True).any())
+
+    def series_has(self, pattern: str):
+        # TODO: Delete this duplicated function
+        """
+        Evaluate if the series contains the pattern
+        """
+        return (Series(self.unique_series).astype(str).str.contains(
+            pattern).eq(True).any())
